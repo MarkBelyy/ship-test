@@ -31,7 +31,13 @@ const ShipMain = () => {
           className={"show-filter-button"}
           onClick={() => setShowFilter((prevState) => !prevState)}
         ></button>
-        <ShipFooter data={data} loading={loading} error={error} />
+        <ShipFooter
+          data={data}
+          loading={loading}
+          error={error}
+          selectedShip={selectedShip}
+          setSelectedShip={setSelectedShip}
+        />
       </div>
     </div>
   );

@@ -37,6 +37,36 @@ export type GetOneShip = {
   } | null;
 };
 
+export type GetAnotherShip = {
+  __typename?: "Vehicle";
+  title?: any | null;
+  description?: any | null;
+  level?: number | null;
+  icons?: {
+    __typename?: "IconsVehicle";
+    large?: any | null;
+    medium?: any | null;
+  } | null;
+  type?: {
+    __typename?: "VehicleType";
+    name?: string | null;
+    title?: any | null;
+    icons?: { __typename?: "IconsVehicleClass"; default?: any | null } | null;
+  } | null;
+  nation?: {
+    __typename?: "Nation";
+    name?: string | null;
+    title?: any | null;
+    color?: any | null;
+    icons?: {
+      __typename?: "NationIcons";
+      small?: any | null;
+      medium?: any | null;
+      large?: any | null;
+    } | null;
+  } | null;
+} | null;
+
 export type GetShipListQuery = {
   __typename?: "GlossaryQuery";
   vehicles?: Array<{
