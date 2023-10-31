@@ -1,0 +1,19 @@
+.main-container {
+  background-image: url(../../../public/background.png);
+  background-size: cover;
+}
+.ship-container {
+  display: flex;
+}
+.footer-container{
+  display: flex;
+}
+.filter-window {
+  position: absolute;
+  height: 82vh;
+  opacity: 0.5;
+  width: 15%;
+}
+.show-filter-button {
+  width: 5%;
+}

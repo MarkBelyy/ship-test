@@ -1,0 +1,2 @@
+schema: https://vortex.korabli.su/api/graphql/glossary/
+documents: '**/*.graphql'
