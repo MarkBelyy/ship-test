@@ -11,22 +11,22 @@ const ShipFooter: FC<{
   selectedShip: number;
   setSelectedShip: Dispatch<React.SetStateAction<number>>;
 }> = ({ data, loading, error, selectedShip, setSelectedShip }) => {
-  // const [isDragging, setIsDragging] = useState(false);
-  // const onMouseDown = () => {
-  //   setIsDragging(true);
-  // };
-  // const onMouseMove = (event: MouseEvent<HTMLDivElement>) => {
-  //   if (isDragging) {
-  //     const container = containerRef.current;
-  //     if (container) {
-  //       container.scrollLeft -= event.movementX;
-  //     }
-  //   }
-  // };
-  //
-  // const onMouseUp = () => {
-  //   setIsDragging(false);
-  // };
+  const [isDragging, setIsDragging] = useState(false);
+  const onMouseDown = () => {
+    setIsDragging(true);
+  };
+  const onMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (isDragging) {
+      const container = containerRef.current;
+      if (container) {
+        container.scrollLeft -= event.movementX;
+      }
+    }
+  };
+
+  const onMouseUp = () => {
+    setIsDragging(false);
+  };
   const containerRef = useRef<HTMLDivElement>(null);
 
   const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
@@ -36,7 +36,7 @@ const ShipFooter: FC<{
       const containerScrollPosition = container.scrollLeft;
       container.scrollTo({
         top: 0,
-        left: containerScrollPosition + event.deltaY,
+        left: containerScrollPosition + event.deltaY * 5,
         behavior: "smooth",
       });
     }
@@ -44,12 +44,12 @@ const ShipFooter: FC<{
 
   return (
     <div
-      className="footer"
+      className={isDragging ? "footer footer-grab" : "footer"}
       ref={containerRef}
       onWheel={onWheel}
-      // onMouseDown={onMouseDown}
-      // onMouseMove={onMouseMove}
-      // onMouseUp={onMouseUp}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
     >
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}

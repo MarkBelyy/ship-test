@@ -1,10 +1,18 @@
-import React, { Dispatch, FC, useEffect, useRef } from "react";
+import React, {
+  Dispatch,
+  FC,
+  MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import "./ShipIcon.scss";
-import { GetAnotherShip } from "../ShipMain/ShipMain.generated";
+// import { GetAnotherShip } from "../ShipMain/ShipMain.generated";
 
 const ShipIcon: FC<any> = ({ vehicle, setSelectedShip, index }) => {
   const imageRef = useRef<HTMLImageElement>(null);
-
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const move = useRef({ x: 0, y: 0 });
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -19,7 +27,6 @@ const ShipIcon: FC<any> = ({ vehicle, setSelectedShip, index }) => {
     if (imageRef.current) {
       observer.observe(imageRef.current);
     }
-    console.log(vehicle?.icons?.medium);
     return () => {
       if (imageRef.current) {
         observer.unobserve(imageRef.current);
@@ -27,11 +34,33 @@ const ShipIcon: FC<any> = ({ vehicle, setSelectedShip, index }) => {
     };
   }, []);
 
+  const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
+    move.current = {
+      x: event.pageX,
+      y: event.pageY,
+    };
+    setIsMouseDown(true);
+  };
+
+  const handleMouseUp = (event: MouseEvent<HTMLDivElement>) => {
+    if (
+      isMouseDown &&
+      move.current.x === event.pageX &&
+      move.current.y === event.pageY
+    ) {
+      setSelectedShip(index);
+    }
+    setIsMouseDown(false);
+  };
+
   return (
-    <div className="icon" onClick={() => setSelectedShip(index)}>
-      <h3>{vehicle?.title}</h3>
+    <div
+      className="icon"
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
       <img
-        className={"icon-img"}
+        className="icon-img"
         ref={imageRef}
         data-src={vehicle?.icons?.medium}
         alt={vehicle?.title}
