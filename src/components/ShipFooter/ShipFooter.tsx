@@ -5,12 +5,12 @@ import { ApolloError } from "@apollo/client";
 import ShipCard from "../ShipIcon/ShipCard";
 
 const ShipFooter: FC<{
-  data: GetShipListQuery | undefined;
+  shipList: GetShipListQuery;
   loading: boolean;
   error: ApolloError | undefined;
   selectedShip: number;
   setSelectedShip: Dispatch<React.SetStateAction<number>>;
-}> = ({ data, loading, error, selectedShip, setSelectedShip }) => {
+}> = ({ shipList, loading, error, selectedShip, setSelectedShip }) => {
   const [isDragging, setIsDragging] = useState(false);
   const onMouseDown = () => {
     setIsDragging(true);
@@ -53,7 +53,7 @@ const ShipFooter: FC<{
     >
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}
-      {data?.vehicles?.map((vehicle, index) => (
+      {shipList?.vehicles?.map((vehicle, index) => (
         <ShipCard
           key={vehicle?.title}
           setSelectedShip={setSelectedShip}

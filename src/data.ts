@@ -66,32 +66,56 @@ export const allNations = [
   },
 ];
 
+export const allNationName = [
+  "japan",
+  "usa",
+  "ussr",
+  "germany",
+  "uk",
+  "france",
+  "pan_asia",
+  "italy",
+  "commonwealth",
+  "pan_america",
+  "europe",
+  "netherlands",
+  "spain",
+];
+
 export const allTypes = [
   {
-    name: "Submarine",
+    name: "submarine",
     image:
       "//glossary.korabli.su/icons/vehicle/types/Submarine/standard_261525e5aae827700eaad3b5c3ab72d1721446ecab80226394fd30e9186d8a2d.png",
   },
   {
-    name: "Destroyer",
+    name: "destroyer",
     image:
       "//glossary.korabli.su/icons/vehicle/types/Destroyer/standard_357acc9fc0e2f7d98f047c99edffad359a8c45f2093024400fef2b9abbaf3a59.png",
   },
   {
-    name: "Cruiser",
+    name: "cruiser",
     image:
       "//glossary.korabli.su/icons/vehicle/types/Cruiser/standard_44b68c918edc534e1367cb6512e9e8cc4d28aa54d237db820f1bbba867266742.png",
   },
   {
-    name: "Battleship",
+    name: "battleship",
     image:
       "//glossary.korabli.su/icons/vehicle/types/Battleship/standard_1468cf2ed1dc129ec4db4d9d18306bd06abb0d6b08c805dc94fe23ce6187c119.png",
   },
   {
-    name: "Aircraft Carrier",
+    name: "aircarrier",
     image:
       "//glossary.korabli.su/icons/vehicle/types/AirCarrier/standard_9f372d47b4fa5b5bbd79a3aaac816cb8d5343fa93949cce8934d94b84751b88e.png",
   },
+];
+
+export const allTypesName = [
+  "submarine",
+  "destroyer",
+  "cruiser",
+  "battleship",
+  "aircarrier",
 ];
 
 export const allLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
