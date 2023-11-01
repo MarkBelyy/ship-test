@@ -1,5 +1,17 @@
 .filter {
-  background-color: #bb53de;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 80vh;
+  opacity: 0.5;
+  width: 20%;
+  display: flex;
+}
+.filter-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-icon{
+  height: 27px;
 }

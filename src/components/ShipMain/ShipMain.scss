@@ -6,18 +6,31 @@
 }
 .ship-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 80vh;
 }
 .footer-container{
   height: 20vh;
   display: flex;
 }
-.filter-window {
-  position: absolute;
-  height: 80vh;
-  opacity: 0.5;
-  width: 15%;
+.footer-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
 }
-.show-filter-button {
-  width: 5%;
+.info-window {
+  position: absolute;
+  right: 0;
+}
+.show-button {
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-top: none;
+  border-left: solid 1px rgba(0, 0, 0, 0.4);
+  border-right: solid 1px rgba(0, 0, 0, 0.4);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.4);
 }

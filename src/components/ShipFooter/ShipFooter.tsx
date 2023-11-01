@@ -2,7 +2,7 @@ import React, { FC, useRef, MouseEvent, useState, Dispatch } from "react";
 import "./ShipFooter.scss";
 import { GetShipListQuery } from "../ShipMain/ShipMain.generated";
 import { ApolloError } from "@apollo/client";
-import ShipIcon from "../ShipIcon/ShipIcon";
+import ShipCard from "../ShipIcon/ShipCard";
 
 const ShipFooter: FC<{
   data: GetShipListQuery | undefined;
@@ -30,7 +30,7 @@ const ShipFooter: FC<{
   const containerRef = useRef<HTMLDivElement>(null);
 
   const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    event.preventDefault();
+    // event.preventDefault();
     const container = containerRef.current;
     if (container) {
       const containerScrollPosition = container.scrollLeft;
@@ -54,7 +54,7 @@ const ShipFooter: FC<{
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}
       {data?.vehicles?.map((vehicle, index) => (
-        <ShipIcon
+        <ShipCard
           key={vehicle?.title}
           setSelectedShip={setSelectedShip}
           index={index}

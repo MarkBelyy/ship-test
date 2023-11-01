@@ -1,0 +1,33 @@
+.card {
+  position: relative;
+  height: 20vh;
+  padding: 0 20px;
+  border-right: solid 1px rgba(0, 0, 0, 0.4);
+  border-left: solid 1px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+}
+.card-img {
+  height: 100%;
+  pointer-events: none;
+}
+.nation-icon{
+  position: absolute;
+  top:10px;
+  left:10px;
+  width: 70px;
+  pointer-events: none;
+}
+.card-level {
+  position: absolute;
+  top: 5px;
+  right:40px;
+  pointer-events: none;
+}
+.type-icon {
+  position: absolute;
+  top: 5px;
+  right:10px;
+  pointer-events: none;
+}

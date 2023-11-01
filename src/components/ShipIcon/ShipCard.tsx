@@ -6,10 +6,10 @@ import React, {
   useRef,
   useState,
 } from "react";
-import "./ShipIcon.scss";
+import "./ShipCard.scss";
 // import { GetAnotherShip } from "../ShipMain/ShipMain.generated";
 
-const ShipIcon: FC<any> = ({ vehicle, setSelectedShip, index }) => {
+const ShipCard: FC<any> = ({ vehicle, setSelectedShip, index }) => {
   const imageRef = useRef<HTMLImageElement>(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const move = useRef({ x: 0, y: 0 });
@@ -55,18 +55,29 @@ const ShipIcon: FC<any> = ({ vehicle, setSelectedShip, index }) => {
 
   return (
     <div
-      className="icon"
+      className="card"
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
       <img
-        className="icon-img"
+        className="nation-icon"
+        src={vehicle?.nation?.icons?.small}
+        alt={vehicle?.nation?.name || "nation"}
+      />
+      <img
+        className="card-img"
         ref={imageRef}
         data-src={vehicle?.icons?.medium}
         alt={vehicle?.title}
+      />
+      <span className="card-level">{vehicle?.level}</span>
+      <img
+        className="type-icon"
+        src={vehicle?.type?.icons?.default}
+        alt={vehicle?.type?.name || "type-name"}
       />
     </div>
   );
 };
 
-export default ShipIcon;
+export default ShipCard;

@@ -1,6 +1,12 @@
 .info {
-  width: 25%;
+  position: absolute;
+  right: 0;
+  width: 20%;
   overflow-y: auto;
   height: 80vh;
-  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  &-description {
+    padding: 20px;
+  }
 }

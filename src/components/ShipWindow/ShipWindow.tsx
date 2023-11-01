@@ -1,11 +1,17 @@
 import React, { FC } from "react";
 import "./ShipWindow.scss";
-import { Vehicle } from "../../types.generated";
 import { GetOneShip } from "../ShipMain/ShipMain.generated";
+
 const ShipWindow: FC<GetOneShip> = (data) => {
+  const backgroundImageStyle = {
+    backgroundImage: `url(${data.vehicle?.icons?.large})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
+
   return (
-    <div className={"window"}>
-      <img src={data.vehicle?.icons?.large} alt={data.vehicle?.title} />
+    <div className="window" style={backgroundImageStyle}>
+      <h1 className="ship-title">{data.vehicle?.title.toUpperCase()}</h1>
     </div>
   );
 };
