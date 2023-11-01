@@ -1,17 +1,18 @@
 import React, { FC, useRef, MouseEvent, useState, Dispatch } from "react";
-import "./ShipFooter.scss";
 import { GetShipListQuery } from "../ShipMain/ShipMain.generated";
 import { ApolloError } from "@apollo/client";
 import ShipCard from "../ShipIcon/ShipCard";
+import "./ShipFooter.scss";
 
 const ShipFooter: FC<{
   shipList: GetShipListQuery;
   loading: boolean;
   error: ApolloError | undefined;
-  selectedShip: number;
   setSelectedShip: Dispatch<React.SetStateAction<number>>;
-}> = ({ shipList, loading, error, selectedShip, setSelectedShip }) => {
+}> = ({ shipList, loading, error, setSelectedShip }) => {
   const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const onMouseDown = () => {
     setIsDragging(true);
   };
@@ -27,10 +28,8 @@ const ShipFooter: FC<{
   const onMouseUp = () => {
     setIsDragging(false);
   };
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    // event.preventDefault();
     const container = containerRef.current;
     if (container) {
       const containerScrollPosition = container.scrollLeft;

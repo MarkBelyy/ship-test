@@ -6,10 +6,14 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { GetAnotherShip } from "../ShipMain/ShipMain.generated";
 import "./ShipCard.scss";
-// import { GetAnotherShip } from "../ShipMain/ShipMain.generated";
 
-const ShipCard: FC<any> = ({ vehicle, setSelectedShip, index }) => {
+const ShipCard: FC<{
+  vehicle: GetAnotherShip;
+  setSelectedShip: Dispatch<number>;
+  index: number;
+}> = ({ vehicle, setSelectedShip, index }) => {
   const imageRef = useRef<HTMLImageElement>(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const move = useRef({ x: 0, y: 0 });

@@ -22,15 +22,16 @@ const ShipSort: FC<{
     <div className="sort">
       <button
         className="sort-button alpha-sort"
-        onClick={() => {
-          alphaSortClick();
-        }}
+        onClick={alphaSortClick}
+        title={"Сортировка по названию"}
       >
         {alphaSort === 2 ? "Z-A" : "A-Z"}
       </button>
+
       <button
         className="sort-button level-sort"
-        onClick={() => levelSortClick()}
+        onClick={levelSortClick}
+        title={"Сортировка по уровню"}
       >
         {levelSort === 2 ? "↓" : "↑"}
       </button>

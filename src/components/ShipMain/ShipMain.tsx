@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./ShipMain.scss";
 import { GetShipListQuery, useGetShipListQuery } from "./ShipMain.generated";
 import ShipFilter from "../ShipFilter/ShipFilter";
 import ShipWindow from "../ShipWindow/ShipWindow";
@@ -7,19 +6,21 @@ import ShipInfo from "../ShipInfo/ShipInfo";
 import ShipFooter from "../ShipFooter/ShipFooter";
 import { allLevels, allNationName, allTypesName } from "../../data";
 import ShipSort from "../ShipSort/ShipSort";
+import "./ShipMain.scss";
 
 const ShipMain = () => {
   const [shipList, setShipList] = useState<GetShipListQuery>({});
   const [selectedShip, setSelectedShip] = useState(0);
   const [showFilter, setShowFilter] = useState(true);
   const [showInfo, setShowInfo] = useState(true);
-  const [showSort, setShowSort] = useState(false);
   const [nationFilter, setNationFilter] = useState<string[]>(allNationName);
   const [typeFilter, setTypeFilter] = useState<string[]>(allTypesName);
   const [levelFilter, setLevelFilter] = useState<number[]>(allLevels);
   const [alphaSort, setAlphaSort] = useState<number>(0);
   const [levelSort, setLevelSort] = useState<number>(0);
+
   const { data, loading, error } = useGetShipListQuery();
+
   useEffect(() => {
     if (data) {
       setShipList(data);
@@ -43,8 +44,8 @@ const ShipMain = () => {
       setShipList({ vehicles: filteredData });
     }
   }, [nationFilter, typeFilter, levelFilter]);
+
   useEffect(() => {
-    const tempData = { ...shipList };
     if (levelSort === 1) {
       setShipList({
         vehicles: shipList.vehicles
@@ -61,7 +62,6 @@ const ShipMain = () => {
   }, [levelSort]);
 
   useEffect(() => {
-    const tempData = { ...shipList };
     if (alphaSort === 1) {
       setShipList({
         vehicles: shipList.vehicles
@@ -115,7 +115,6 @@ const ShipMain = () => {
             className="show-button"
             onClick={() => {
               setShowFilter((prevState) => !prevState);
-              setShowSort(false);
             }}
           >
             {showFilter ? "Скрыть фильтры" : "Показать фильтры"}
@@ -131,7 +130,6 @@ const ShipMain = () => {
           shipList={shipList}
           loading={loading}
           error={error}
-          selectedShip={selectedShip}
           setSelectedShip={setSelectedShip}
         />
       </div>
